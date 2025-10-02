@@ -1,5 +1,5 @@
 /*
- * *** YOUR NAME GOES HERE / YOUR SECTION NUMBER ***
+ * *** Joanelis Rivera Matos / 002 ***
  *
  * This java file contains several simple tree problems that need to be
  * codified. These routines  must use the TreeMap and TreeSet library
@@ -26,8 +26,19 @@ public class TreeProblems {
     // This can be done numerous ways, but once such will only that
     // *several* lines of code. Hint: create two temporary TreeSets and utilize the
     // methods retainAll(), addAll(), and removeAll(). But in the end, get something to work.
+    Set<Integer> result = new TreeSet<Integer>();
+    Set<Integer> temporarySetA = new TreeSet<Integer>();
+    Set<Integer> temporarySetB = new TreeSet<Integer>();
 
-    return setA;
+    temporarySetA.addAll(setA);
+    temporarySetB.addAll(setB);
+    temporarySetA.removeAll(temporarySetB);
+    temporarySetB.removeAll(setA);
+
+    result.addAll(temporarySetA);
+    result.addAll(temporarySetB);
+
+    return result;
   }
 
 
@@ -41,6 +52,17 @@ public class TreeProblems {
   public static void removeEven(Map<Integer, String> treeMap) {
 
     // INSERT CODE HERE.
+    Map<Integer, String> temporary = new TreeMap<Integer, String>();
+
+    for(Map.Entry<Integer, String> value : treeMap.entrySet()){
+      if(value.getKey() % 2 == 0) {
+        temporary.put(value.getKey(), value.getValue());
+      }
+    }
+
+    for(Integer removal : temporary.keySet()){
+      treeMap.remove(removal);
+    }
 
     return;
   }
@@ -57,7 +79,7 @@ public class TreeProblems {
 
     // INSERT CODE HERE
 
-    return false;
+    return tree1.equals(tree2);
 
   }
 
